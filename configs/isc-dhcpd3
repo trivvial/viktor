@@ -1,0 +1,23 @@
+option domain-name "tuke.sk";
+
+default-lease-time 6048;
+max-lease-time 604800;
+
+allow booting;
+allow bootp;
+
+subnet 192.168.254.0 netmask 255.255.255.0 {
+  range 192.168.254.10 192.168.254.253;
+  option subnet-mask 255.255.255.0;
+  option broadcast-address 192.168.254.255;
+  option routers 192.168.254.1;
+  option domain-name-servers 192.168.254.3;
+  next-server 192.168.254.4;
+  filename "/pxelinux.0";
+}
+
+host lprs-pcAdmin {
+  hardware ethernet 00:12:00:12:00:22;
+  fixed-address 192.168.35.110;
+  option host-name "lprs-pcAdmin";
+}
