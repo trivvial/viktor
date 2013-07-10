@@ -15,12 +15,13 @@ if (isset($_POST['name'])) {
   if (!$MachineName || !$MachineMac || !$MachineIP || !$MachineOS || !$MachineBundle) {
     $odpoved = "All fields are required!";
     //echo '<meta http-equiv="refresh" content="0;url=crea.php?n='.$MachineName.'&m='.$MachineMac.'&i='.$MachineIP.'&l='.$MachineOS.'&p='.$MachineLang.'&q='.$MachineBundle.'&o='.$odpoved.'">';
-    echo '<meta http-equiv="refresh" content="0;url=crea.php?n='.$MachineName.'&m='.$MachineMac.'&i='.$MachineIP.'&l='.$MachineOS.'&q='.$MachineBundle.'&o='.$odpoved.'">';
+    echo '<meta http-equiv="refresh" content="0;url=man_ma.php?n='.$MachineName.'&m='.$MachineMac.'&i='.$MachineIP.'&l='.$MachineOS.'&q='.$MachineBundle.'&o='.$odpoved.'">';
   }
   else {
     /*zisti sa ci ip a mac maju spravny format a neexistuju v databaze a ulozia sa*/
     if (ip($MachineIP)==1) {
       if (mac($MachineMac)==1) {
+        $MachineMac = remSepare($MachineMac);
         if ($update==0) {
           $macquery = "SELECT * FROM `machines` WHERE mac = '".$MachineMac."'";
           $ipquery = "SELECT * FROM `machines` WHERE ip = '".$MachineIP."'";
@@ -29,7 +30,6 @@ if (isset($_POST['name'])) {
           $macquery = "SELECT * FROM `machines` WHERE mac = '".$MachineMac."' and idmachine <> '".$update."'";
           $ipquery = "SELECT * FROM `machines` WHERE ip = '".$MachineIP."' and idmachine <> '".$update."'";
         }
-        $MachineMac = remSepare($MachineMac);
         $exists = $dat->query($macquery);
         $num_results = $exists->num_rows;
         if ($num_results == 0) {
@@ -56,9 +56,9 @@ if (isset($_POST['name'])) {
     }
     else {$odpoved='Wrong IP address!';}
   }
-  echo '<meta http-equiv="refresh" content="0;url=crea.php?n='.$MachineName.'&m='.$MachineMac.'&i='.$MachineIP.'&l='.$MachineOS.'&q='.$MachineBundle.'&o='.$odpoved.'">';
+  echo '<meta http-equiv="refresh" content="0;url=man_ma.php?n='.$MachineName.'&m='.$MachineMac.'&i='.$MachineIP.'&l='.$MachineOS.'&q='.$MachineBundle.'&o='.$odpoved.'">';
 }
 else {
-  echo '<meta http-equiv="refresh" content="0;url=crea.php?o=No direct access please, thanks!">';
+  echo '<meta http-equiv="refresh" content="0;url=man_ma.php?o=No direct access please, thanks!">';
 }
 ?>

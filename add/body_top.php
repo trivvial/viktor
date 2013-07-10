@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="css/css.css" type="text/css" />
 </head>
 <body>
-<div id="hlavny">
+<!-- <div id="hlavny"> -->
 	<span id="spanovy">» [<?php echo date('m-d-Y H:i:s', time());?>]<br>» <?php echo /*$_SESSION['user']*/'vkristi';?>@unattended:~$<div class="cursor"> </div></span>
   <div id="lavy">
   	<h1 style="margin-left:15px;">Links</h1>

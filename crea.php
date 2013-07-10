@@ -142,9 +142,7 @@ if (isset($_POST["e"])) {
 
   </div>
   <div id="pravy">
-
 		 <?php include('add/r_menu.html'); ?>
-
   </div>
 </div>
 </body>

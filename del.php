@@ -9,9 +9,9 @@ if (isset($_POST['del'])) {
   $delete = $dat->query("delete FROM `machines` WHERE idmachine = '".$MachineID."'");
   if ($delete) {$odpoved = 'Machine was successfully deleted from database';}
   else {$odpoved = 'Unable to delete selected machine from database try again later';}
-  echo '<meta http-equiv="refresh" content="0;url=delete.php?o='.$odpoved.'">';
+  echo '<meta http-equiv="refresh" content="0;url=man_ma.php?o='.$odpoved.'">';
 }
 else {
-  echo '<meta http-equiv="refresh" content="0;url=delete.php?o=No direct access please, thanks!">';
+  echo '<meta http-equiv="refresh" content="0;url=man_ma.php?o=No direct access please, thanks!">';
 }
 ?>
